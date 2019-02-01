@@ -110,10 +110,6 @@ class Film
     return results
   end
 
-  def self.map_items(data) #this move allows you to pull the records out as objects in an array
-    result = data.map{|film| Film.new(film)}
-    return result
-  end
 
 
 end

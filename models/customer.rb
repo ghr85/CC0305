@@ -91,55 +91,54 @@ class Customer
     return customer
   end
 
-  def can_afford(film_obj)
-    return true if film_obj.price <= funds
+  def request_film_data(film_string)
+    sql = "SELECT * FROM films WHERE title = $1"
+    values = [film_string]
+    films = SqlRunner.run(sql,values)
+    result = films.map{|film| Film.new(film)}[0] #YOU HAVE TO ACCESS THE ARRAY TO USE IT!
+    return result
   end
 
-  def buy_ticket(film_string)
-    film_ary = Film.map_items(Film.all)
-    film_obj = film_ary.find{|film| film['title'] == film_string}
-    binding.pry
-    if self.can_afford(film_obj.price) == true
-      @funds -= film.price
+  def buy_ticket(film_string) #Wow! This was tough.
+    film_obj = self.request_film_data(film_string)
+    if film_obj.price.to_i <= @funds # Remember to convert to int
+      @funds -= film_obj.price.to_i
       new_ticket = Ticket.new(
         {
-          'customer_id' => self.id,
-          'film_id'=> film.id}
+          'customer_id' => @id,
+          'film_id'=> film_obj.id}
         )
+        new_ticket.save
+        return "Enjoy #{film_obj.title} #{first_name} "
       else
-        return nil
+        return "Sorry #{first_name} you'll need more cash to watch this one."
       end
     end
 
 
-  def films()
-    sql = "SELECT films.*
-    FROM films
-    INNER JOIN tickets ON tickets.film_id = films.id
-    WHERE tickets.customer_id = $1"
-    values = [@id]
-    films = SqlRunner.run(sql,values)  #pull film from PG array-type object
-    results = films.map {|film| Film.new(film)}
-    return results
-  end
+    def films()
+      sql = "SELECT films.*
+      FROM films
+      INNER JOIN tickets ON tickets.film_id = films.id
+      WHERE tickets.customer_id = $1"
+      values = [@id]
+      films = SqlRunner.run(sql,values)  #pull film from PG array-type object
+      results = films.map {|film| Film.new(film)}
+      return results
+    end
 
-  def self.films(customer_id_int) #Was a PITA creating a new instance of films/tickets every time
-    sql = "SELECT films.*
-    FROM films
-    INNER JOIN tickets ON tickets.film_id = films.id
-    WHERE tickets.customer_id = $1"
-    values = [customer_id_int] #class method so accept a parameter
-    films = SqlRunner.run(sql,values)
-    results = films.map {|film| Film.new(film)}
-    return results
-  end
+    def self.films(customer_id_int) #Was a PITA creating a new instance of films/tickets every time
+      sql = "SELECT films.*
+      FROM films
+      INNER JOIN tickets ON tickets.film_id = films.id
+      WHERE tickets.customer_id = $1"
+      values = [customer_id_int] #class method so accept a parameter
+      films = SqlRunner.run(sql,values)
+      results = films.map {|film| Film.new(film)}
+      return results
+    end
 
-  def self.request_film_data
+
+
 
   end
-  
-  def self.map_items(customer_data) #this move allows you to pull the records out as objects in an array
-    result_ary = data.map{|customer| Customer.new(customer)}
-    return result
-  end
-end

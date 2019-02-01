@@ -90,6 +90,16 @@ class Ticket
     return ticket
   end
 
+  def self.count_customer(customer) #class method
+    sql = "SELECT * FROM tickets where customer_id = $1"
+    values = [customer.id]
+    results = SqlRunner.run(sql,values)
+    count = results.map { |ticket| Ticket.new( ticket ) }
+    return "#{count.length} tickets bought by #{customer.first_name} #{customer.last_name}"
+  end
+
+
+
 
 
 end
