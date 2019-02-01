@@ -21,4 +21,4 @@ This bookings program will be built in Ruby using a Postgres database.
 * brief.md - Homework task details Markdown
 * readme.md - this file.
 
-> ""
+> "You had to have a ticket...."
