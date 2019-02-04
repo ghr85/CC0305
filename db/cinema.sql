@@ -12,9 +12,6 @@ DROP TABLE tickets;
 DROP TABLE customers;
 DROP TABLE films;
 
-
-
-
 CREATE TABLE films(
   title VARCHAR(255),
   price INT4,

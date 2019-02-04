@@ -42,5 +42,7 @@ customer_1.buy_ticket('Everything is Illuminated')
 customer_2.buy_ticket('Everything is Illuminated')
 customer_1.buy_ticket('Me, Myself, Irene')
 
+
+
 binding.pry
 nil
