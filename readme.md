@@ -6,14 +6,18 @@
 You've been tasked with building a bookings system for a cinema.
 This bookings program will be built in Ruby using a Postgres database.
 This cinema should have films, tickets and customers - later screenings.
+Films, Tickets & Customers should have basic CRUD functionality
+Functions should be added as per MVP and extension spec in brief.md
 
 
 ## Notes
 
 * Was ill during this one so limped through it with half a brain.
-* Decide whether or not to pass stings/objects to functions
+* Decide whether or not to pass strings/objects to functions
 * A lot of time wasted on forgetting the format which data is returned from postgres AN ARRAY OF STRINGS!
-* 
+* Find/replace can be handy but you'll spend more time tweaking and learn less than just typing it in the first place.
+* Is it better to use console to create data or load with SQL?
+
 
 ## Files
 
@@ -26,4 +30,4 @@ This cinema should have films, tickets and customers - later screenings.
 * brief.md - Homework task details Markdown
 * readme.md - this file.
 
-> "You had to have a ticket...."
+> "What one man can do another can do..."

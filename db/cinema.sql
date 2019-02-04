@@ -38,6 +38,7 @@ CREATE TABLE screenings(
   film_id INT4 REFERENCES films(id) ON DELETE CASCADE,
   showtime VARCHAR(255),
   capacity INT4,
+  ticket_id INT4 REFERENCES tickets(id) ON DELETE CASCADE,
   id SERIAL4 PRIMARY KEY
 );
 
@@ -63,17 +64,14 @@ INSERT INTO tickets (film_id,customer_id) VALUES (1,3);
 INSERT INTO tickets (film_id,customer_id) VALUES (3,4);
 INSERT INTO tickets (film_id,customer_id) VALUES (4,3);
 
-
-
-
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('4','13:00', 3);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','14:00', 4);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','15:00', 4);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','16:00', 2);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','19:00', 2);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','21:00', 3);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','16:00', 4);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','19:00', 1);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','19:00', 2);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','21:00', 3);
-INSERT INTO screenings (film_id,showtime,capacity) VALUES ('4','19:00', 4);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('4','13:00', 3,8);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('3','14:00', 4,7);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('1','15:00', 4,6);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('2','16:00', 2,1);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('2','19:00', 2,5);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('2','21:00', 3,7);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('1','16:00', 4,6);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('1','19:00', 1,6);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('3','19:00', 2,7);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('3','21:00', 3,7);
+INSERT INTO screenings (film_id,showtime,capacity,ticket_id) VALUES ('4','19:00', 4,8);

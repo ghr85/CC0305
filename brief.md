@@ -24,10 +24,10 @@ It's enough if you can call your methods in pry, don't worry about an interface.
 ### Basic extensions:
   - Buying tickets should decrease the funds of the customer by the price :white_check_mark:
   - Check how many tickets were bought by a customer :white_check_mark:
-  - Check how many customers are going to watch a certain film
+  - Check how many customers are going to watch a certain film :white_check_mark:
 
 ### Advanced extensions:
-  - Create a screenings table that lets us know what time films are showing
+  - Create a screenings table that lets us know what time films are showing :white_check_mark:
   - Write a method that finds out what is the most popular time (most tickets sold) for a given film
   - Limit the available tickets for screenings.
   - Add any other extensions you think would be great to have at a cinema!
