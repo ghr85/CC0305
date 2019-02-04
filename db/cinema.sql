@@ -7,7 +7,7 @@
 -- Pair Programming
 -- IMDB Apllication
 
--- DROP TABLE screenings; -- remember order is important here
+DROP TABLE screenings; -- remember order is important here
 DROP TABLE tickets;
 DROP TABLE customers;
 DROP TABLE films;
@@ -34,12 +34,12 @@ CREATE TABLE tickets(
   id SERIAL4 PRIMARY KEY
 );
 
--- CREATE TABLE screenings(
---   film_id INT4 REFERENCES films(id) ON DELETE CASCADE,
---   showtime VARCHAR(255),
---   capacity INT4,
---   id SERIAL4 PRIMARY KEY
--- );
+CREATE TABLE screenings(
+  film_id INT4 REFERENCES films(id) ON DELETE CASCADE,
+  showtime VARCHAR(255),
+  capacity INT4,
+  id SERIAL4 PRIMARY KEY
+);
 
 INSERT INTO films (title,price) VALUES ('Halloween', 10);
 INSERT INTO films (title,price) VALUES ('Black Panther', 8);
@@ -63,4 +63,17 @@ INSERT INTO tickets (film_id,customer_id) VALUES (1,3);
 INSERT INTO tickets (film_id,customer_id) VALUES (3,4);
 INSERT INTO tickets (film_id,customer_id) VALUES (4,3);
 
--- INSERT INTO sc (film_id,customer_id VALUES ('4','3');
+
+
+
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('4','13:00', 3);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','14:00', 4);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','15:00', 4);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','16:00', 2);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','19:00', 2);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('2','21:00', 3);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','16:00', 4);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('1','19:00', 1);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','19:00', 2);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('3','21:00', 3);
+INSERT INTO screenings (film_id,showtime,capacity) VALUES ('4','19:00', 4);

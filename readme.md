@@ -5,10 +5,15 @@
 
 You've been tasked with building a bookings system for a cinema.
 This bookings program will be built in Ruby using a Postgres database.
+This cinema should have films, tickets and customers - later screenings.
 
 
 ## Notes
 
+* Was ill during this one so limped through it with half a brain.
+* Decide whether or not to pass stings/objects to functions
+* A lot of time wasted on forgetting the format which data is returned from postgres AN ARRAY OF STRINGS!
+* 
 
 ## Files
 
