@@ -94,8 +94,17 @@ class Ticket
     sql = "SELECT * FROM tickets where customer_id = $1"
     values = [customer.id]
     results = SqlRunner.run(sql,values)
-    count = results.map { |ticket| Ticket.new( ticket ) }
+    count = results.map { |customer| Customer.new( customer ) }
     return "#{count.length} tickets bought by #{customer.first_name} #{customer.last_name}"
+  end
+
+  def self.count_customer_film(film) #class method
+    sql = "SELECT * FROM tickets WHERE film_id = $1"
+    values = [film.id]
+    results = SqlRunner.run(sql,values)
+    ary_films = results.map { |ticket| Ticket.new( ticket ) }
+    count = ary_films.length
+    return "#{count} patrons will be watching #{film.title} today."
   end
 
 

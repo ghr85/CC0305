@@ -22,8 +22,8 @@ It's enough if you can call your methods in pry, don't worry about an interface.
   - Show which films a customer has booked to see, and see which customers are coming to see one film. :white_check_mark:
 
 ### Basic extensions:
-  - Buying tickets should decrease the funds of the customer by the price
-  - Check how many tickets were bought by a customer
+  - Buying tickets should decrease the funds of the customer by the price :white_check_mark:
+  - Check how many tickets were bought by a customer :white_check_mark:
   - Check how many customers are going to watch a certain film
 
 ### Advanced extensions:
