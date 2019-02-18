@@ -5,27 +5,26 @@
 
 class Screening
   attr_reader :id
-  attr_accessor :showtime_string,:film_id,:ticket_id
+  attr_accessor :showtime_string,:film_id
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @showtime_string = options['showtime']
     @film_id = options['film_id']
     @capacity_int = options['capacity']
-    @ticket_id = options['ticket_id']
   end
 
   def save()
     sql = "INSERT INTO screenings
     (
-      showtime, film_id, capacity,ticket_id
+      showtime, film_id, capacity
     )
     VALUES
     (
-      $1,$2,$3,$4
+      $1,$2,$3
     )
     RETURNING id"
-    values = [@showtime_string,@film_id,@capacity_int,@ticket_id]
+    values = [@showtime_string,@film_id,@capacity_int]
     screening = SqlRunner.run( sql, values ).first
     @id = screening['id'].to_i
   end
@@ -34,14 +33,14 @@ class Screening
 
     sql = "UPDATE screenings SET
     (
-      showtime,film_id, capacity,ticket_id
+      showtime,film_id, capacity
     )
     =
     (
-      $1,$2,$3,$4
+      $1,$2,$3
     )
-    WHERE id = $5"
-    values = [@showtime_string,@film_id,@capacity_int,@id,@ticket_id]
+    WHERE id = $4"
+    values = [@showtime_string,@film_id,@capacity_int,@id]
     screening = SqlRunner.run( sql, values ).first
 
   end
